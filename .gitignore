@@ -17,6 +17,7 @@ __history
 *.dsm
 *.cbk
 *.stat
+dunit.ini
 TestInsightSettings.ini
 *.tvsconfig
 *.res
