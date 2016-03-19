@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{8B359267-3CF2-496B-BDE4-83F0AC77484B}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Test\PriorityQueueTests.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="PriorityQueueDev.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="PriorityQueueTests">
+        <MSBuild Projects="Test\PriorityQueueTests.dproj"/>
+    </Target>
+    <Target Name="PriorityQueueTests:Clean">
+        <MSBuild Projects="Test\PriorityQueueTests.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PriorityQueueTests:Make">
+        <MSBuild Projects="Test\PriorityQueueTests.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="PriorityQueueDev">
+        <MSBuild Projects="PriorityQueueDev.dproj"/>
+    </Target>
+    <Target Name="PriorityQueueDev:Clean">
+        <MSBuild Projects="PriorityQueueDev.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PriorityQueueDev:Make">
+        <MSBuild Projects="PriorityQueueDev.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="PriorityQueueTests;PriorityQueueDev"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="PriorityQueueTests:Clean;PriorityQueueDev:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="PriorityQueueTests:Make;PriorityQueueDev:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
